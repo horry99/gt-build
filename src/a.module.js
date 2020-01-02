@@ -1,0 +1,37 @@
+import moment from 'moment'
+let bbb = require('./b.module')
+import './style.css'
+import './main.scss'
+console.log(bbb);
+let fn = () => {
+    console.log('111');
+}
+fn()
+
+// console.lo('111');
+import 'moment/locale/zh-cn';
+moment.locale('zh-cn');
+const r = moment().endOf('day').fromNow();
+console.log(r)
+// @log
+// class A {
+//     a = 1
+// }
+// let a = new A()
+// console.log(a.a);
+
+// function log(target) {
+//     console.log(target, '23');
+// }
+
+
+// 处理图片
+/****
+ * 1）js创建的图片
+ * 2）css里的图片
+ * 3）html里面的图片
+ */
+import bg from './image/login_bg.jpg'
+var image = new Image()
+image.src = bg
+document.body.appendChild(image)
