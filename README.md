@@ -1,0 +1,2 @@
+# gt-webpack
+webpack-scaffold
