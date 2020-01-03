@@ -1,8 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const Webpack = require('webpack')
-console.log(path.resolve(__dirname, './node_modules/vue/dist/vue.esm.js'));
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
     resolve: {
         // modules:[path.resolve(__dirname,'./node_modules')],
@@ -13,7 +12,7 @@ module.exports = {
     },
     entry: path.resolve('src/index.js'),
     output: {
-        filename: 'bundle.[hash].js',
+        filename: '[name].js',
         path: path.resolve('dist')
     },
     // 插件
@@ -21,18 +20,16 @@ module.exports = {
         // 打包模板并将打包好的文件自动插入到模板中
         new HtmlWebpackPlugin({
             title: 'webpack-demo',
-            // template: './public/index.html',
-            template:'html-withimg-loader!' + path.resolve(__dirname, './public/index.html'),
-            filename: 'index.html'
+            template: './public/index.html',
+            // template: 'html-withimg-loader!' + path.resolve(__dirname, './public/index.html'),
+            filename: 'index.html',
             // minify: {
             //     removeAttributeQuotes: true,// 去除引号
             //     collapseWhitespace: true// 去除空格、换行符   
             // }
         }),
         // 清除上次打包的文件
-        new CleanWebpackPlugin({}),
-        // 优化
-        new Webpack.IgnorePlugin(/\.\/locale$/,/moment$/)
+        // new CleanWebpackPlugin({}),
     ],
     // 执行顺序（从小往上，从右往左）
     module: {
@@ -64,7 +61,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         // 转化成es5的集合插件
-                        presets: ['@babel/preset-env'],
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
                         plugins: [
                             ["@babel/plugin-proposal-decorators", { "legacy": true }],// 装饰器
                             ["@babel/plugin-proposal-class-properties", { "loose": true }],// class语法
@@ -76,7 +73,9 @@ module.exports = {
         ]
     },
     // 不需要打包
-    // externals: {
-    //     jquery: 'jQuery'
-    // }
+    externals: {
+        // jquery: 'jQuery'
+        // 'react':'React',
+        // 'react-dom':'ReactDOM'
+    }
 }

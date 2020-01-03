@@ -1,3 +1,6 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+ReactDOM.render(<h1>jsx</h1>,document.getElementById('root'))
 import moment from 'moment'
 let bbb = require('./b.module')
 import './style.css'
@@ -7,6 +10,7 @@ let fn = () => {
     console.log('111');
 }
 fn()
+console.log(window);
 
 // console.lo('111');
 import 'moment/locale/zh-cn';
