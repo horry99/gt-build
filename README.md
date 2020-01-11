@@ -1,4 +1,4 @@
-# webpack-scaffold
+# buils-scaffold
 // webpack 默认支持模块的写法  common.js node的语法
     也支持es6规范 esModule
 
