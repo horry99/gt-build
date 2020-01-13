@@ -1,17 +1,12 @@
 <template>
-  <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <transition name="el-fade-in-linear">
+    <router-view />
+  </transition>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+  name: 'app'
 }
 </script>
 

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import router from './router/index.js'
+import './scss/aui.scss'
 Vue.config.productionTip = false
-console.log(window);
 new Vue({
+    router,
     render: h => h(App),
 }).$mount('#app')

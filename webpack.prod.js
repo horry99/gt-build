@@ -45,6 +45,9 @@ const ProdConfig = {
             }
         ]
     },
+    externals: {
+        "vue": "Vue"
+    },
     devtool: 'cheap-module-source-map'
 }
 module.exports = Merge(
