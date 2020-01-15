@@ -6,7 +6,17 @@
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  created() {
+    this.$http
+      .put('/sys/work/space/userDataEChart')
+      .then(({ data: res }) => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 }
 </script>
 

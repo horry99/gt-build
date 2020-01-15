@@ -6,19 +6,19 @@ const routes = [
         path: '/',
         // redirect: '/home',
         name: 'home',
-        component: () => import('../views/pages/home.vue'),
+        component: () => import('@/views/pages/home'),
         // children: [
         //     {
         //         path: '/home',
         //         name: 'home',
         //         meta: { title: '首页', affix: true },
-        //         component: () => import('../views/pages/home.vue')
+        //         component: () => import('@/views/pages/home')
         //     }
         // ]
     },
     {
         path: '/404',
-        component: () => import('../views/pages/404.vue'),
+        component: () => import('@/views/pages/404'),
         name: '404',
         meta: { title: '404未找到' },
         beforeEnter(to, from, next) {
@@ -32,7 +32,7 @@ const routes = [
     },
     {
         path: '*',
-        component: () => import('../views/pages/404.vue')
+        component: () => import('@/views/pages/404')
     },
 ]
 const router = new Router({

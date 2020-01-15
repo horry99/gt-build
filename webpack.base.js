@@ -1,6 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const Webpack = require('webpack')
+const env = require('./env')
+const getEnv = require(`./src/getEnv/${env.getEnv()}`)
 module.exports = {
     entry: path.resolve(__dirname, './src/main.js'),
     output: {
@@ -15,8 +18,12 @@ module.exports = {
             template: './public/index.html',
             filename: 'index.html',
         }),
-        new VueLoaderPlugin({})
+        new VueLoaderPlugin({}),
+        new Webpack.DefinePlugin({
+            'process.env': JSON.stringify(getEnv)
+        })
     ],
+    // loader
     module: {
         noParse: /jquery/,
         rules: [
@@ -26,8 +33,8 @@ module.exports = {
                 loader: 'html-withimg-loader'
             },
             {
-                test:/\.vue$/,
-                loader:'vue-loader'
+                test: /\.vue$/,
+                loader: 'vue-loader'
             },
             // 图片
             {
@@ -49,5 +56,11 @@ module.exports = {
                 }
             },
         ]
+    },
+    resolve: {
+        extensions: ['.vue', '.js', 'jsx', '.scss', '.css'],
+        alias: {
+            '@': path.resolve(__dirname, './src')
+        }
     }
 }

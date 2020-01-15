@@ -50,6 +50,7 @@ const ProdConfig = {
     },
     devtool: 'cheap-module-source-map'
 }
+console.log(process.env);
 module.exports = Merge(
     Base,
     ProdConfig
