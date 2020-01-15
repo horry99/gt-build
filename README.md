@@ -12,4 +12,5 @@ gt-build init [name]
 Go to the created directory and start webpack devServer via npm or yarn:
 
 cd [name]
+
 npm run serve
