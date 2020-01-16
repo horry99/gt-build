@@ -1,3 +1,5 @@
-NODE_ENV=production
-VUE_APP_NODE_ENV=prod:test
-VUE_APP_BASE_URL=http://47.112.100.85:9527/backManager
+module.exports =  {
+    NODE_ENV: "production",
+    VUE_APP_NODE_ENV: "prod:test",
+    VUE_APP_BASE_URL: "http://localahost"
+}

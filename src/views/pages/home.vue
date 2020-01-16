@@ -9,7 +9,7 @@ export default {
   name: 'home',
   created() {
     this.$http
-      .put('/sys/work/space/userDataEChart')
+      .post('/qsBank/oralTopic/list')
       .then(({ data: res }) => {
         console.log(res)
       })

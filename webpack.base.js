@@ -7,7 +7,7 @@ const getEnv = require(`./src/getEnv/${env.getEnv()}`)
 module.exports = {
     entry: path.resolve(__dirname, './src/main.js'),
     output: {
-        filename: '[name].js',
+        filename: '[name].[hash].js',
         path: path.resolve('dist'),
         publicPath: '/'
     },
@@ -47,6 +47,11 @@ module.exports = {
                         outputPath: 'img/'
                     }
                 }
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                include: /node_modules/,
+                loader: 'file-loader'
             },
             {
                 test: /\.js$/,

@@ -2,19 +2,24 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 const routes = [
+    { path: '/login', component: () => import('@/views/pages/login'), name: 'login' },
     {
         path: '/',
-        // redirect: '/home',
+        redirect: '/home',
         name: 'home',
+        // 需要登录才能进入的页面可以增加一个meta属性
+        meta: {
+            requireAuth: true
+        },
         component: () => import('@/views/pages/home'),
-        // children: [
-        //     {
-        //         path: '/home',
-        //         name: 'home',
-        //         meta: { title: '首页', affix: true },
-        //         component: () => import('@/views/pages/home')
-        //     }
-        // ]
+        children: [
+            {
+                path: '/home',
+                name: 'home',
+                meta: { title: '首页', affix: true, requireAuth: true },
+                component: () => import('@/views/pages/home')
+            }
+        ]
     },
     {
         path: '/404',
@@ -33,10 +38,10 @@ const routes = [
     {
         path: '*',
         component: () => import('@/views/pages/404')
-    },
+    }
 ]
 const router = new Router({
-    mode: 'history',
-    routes: routes
+    routes
 })
+
 export default router

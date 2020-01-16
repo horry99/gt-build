@@ -1,7 +1,6 @@
 const path = require('path')
 const Webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // 关于dll打包中，使用声明 production || 使用 alias 处理路径 可以大幅减少包的体积。
 module.exports = {
     mode: 'production',
@@ -22,10 +21,9 @@ module.exports = {
     },
     plugins: [
         new Webpack.DllPlugin({
-            name: '_dll_[name]',// 在manifest清单中的变量去查找打包出来的dll文件
+            name: '_dll_[name]',
             path: path.resolve(__dirname, './dist', '[name].manifest.json'),
         }),
-        // new CleanWebpackPlugin({}),
         // 压缩
         new UglifyJsPlugin({
             uglifyOptions: {
@@ -36,13 +34,6 @@ module.exports = {
                 compress: true,
                 warnings: false
             }
-        }),
-        // 优化
-        // 使用生产模式构建(mode:'delevopment'的环境下)
-        // new Webpack.DefinePlugin({
-        //     'process.env': {
-        //         'NODE_ENV': JSON.stringify('production')
-        //     }
-        // }),
+        })
     ]
 }
