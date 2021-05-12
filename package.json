@@ -46,7 +46,7 @@
     "moment": "^2.24.0",
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss": "^7.0.25",
+    "postcss": "^8.2.10",
     "postcss-load": "^0.1.6",
     "postcss-loader": "^3.0.0",
     "qs": "^6.9.1",
